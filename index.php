@@ -1,5 +1,8 @@
 <?php 
 	include("models/connect.php");
 	$dbsql = new ConnectDB();
-	$dbsql->insert($aux);
+	$values = $dbsql->list("empresas");
+	while ($row = pg_fetch_array($values)) {
+		echo $row["cnpj"];
+	}
 ?>

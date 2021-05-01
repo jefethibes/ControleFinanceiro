@@ -17,15 +17,15 @@ class ConnectDB
 		try{
 			$this->db = pg_connect("host=$this->host port=$this->port dbname=$this->dbname user=$this->user password=$this->password");
 		} catch (Exception $e) {
-			echo "Falha ao conectar com o banco de dados!";
+			echo "Falha ao conectar com o banco de dados! " . $e;
 		}
 	}
 
 
-	public function insert($values)
+	public function insert($table, $values)
 	{
 		try {
-			$sql = "INSERT INTO empresas(";
+			$sql = "INSERT INTO $table(";
 			$columns = null;
 			$lines = null;
 			$keys = array_keys($values);
@@ -49,11 +49,84 @@ class ConnectDB
 			$sql .= $columns .= $lines;
 			pg_query($this->db, $sql);
 			pg_close($this->db);
+			return true;
 		} catch (Exception $e) {
-			echo "Falha ao inserir os dados";
+			return false;
 		}
 	}
 
+	public function delete($table, $id)
+	{
+		try{
+			$sql = "DELETE FROM $table WHERE id = $id";
+			pg_query($this->db, $sql);
+			pg_close($this->db);
+			return true;
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+
+	public function update($table, $values, $id)
+	{
+		try{
+			$sql = "UPDATE $table SET ";
+			$keys = array_keys($values);
+			foreach ($values as $key => $value) {
+				if (end($keys) == $key) {
+					if (is_numeric($value)) {
+						$sql .= "$key = $value WHERE id = $id;";
+					} else {
+						$sql .= "$key = '$value' WHERE id = $id;";
+					}
+				} else {
+					if (is_numeric($value)) {
+						$sql .= "$key = $value, ";
+					} else {
+						$sql .= "$key = '$value', ";
+					}
+				}				
+			}
+			pg_query($this->db, $sql);
+			pg_close($this->db);
+			return true;
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+
+	public function list($table)
+	{
+		try{
+			$sql = "SELECT * FROM $table;";
+			$values = pg_query($this->db, $sql);
+			pg_close($this->db);
+			echo var_dump($values);
+			if(pg_num_rows($values) == 0){
+				return false;
+			} else {
+				return $values;
+			} 
+		} catch (Exception $e) {
+			return $e;
+		}
+	}
+
+	public function list_one($table, $id)
+	{
+		try{
+			$sql = "SELECT * FROM $table where id = $id;";
+			$values = pg_query($this->db, $sql);
+			pg_close($this->db);
+			if (pg_num_rows($values) == 0) {
+				return false;
+			} else {
+				return $values;
+			}
+		} catch (Exception $e) {
+			return $e;
+		}
+	}
 }
 
 ?>
