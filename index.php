@@ -1,8 +1,11 @@
-<?php 
-	include("models/connect.php");
-	$dbsql = new ConnectDB();
-	$values = $dbsql->list("empresas");
-	while ($row = pg_fetch_array($values)) {
-		echo $row["cnpj"];
-	}
+<?php
+	require "vendor/autoload.php";
+
+	$loader = new \Twig\Loader\FilesystemLoader("views");
+
+	$twig = new \Twig\Environment($loader, [
+		"debug" => true,
+	]);
+
+	echo $twig->render("login.html");
 ?>
