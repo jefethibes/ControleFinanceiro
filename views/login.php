@@ -10,6 +10,12 @@
 </head>
 <body>
 	<main class="form-signin">
+		<?php if ($_GET["log"] == 0): ?>
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				Usuário e/ou Senha inválidos! :(
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		<?php endif ?>
 		<form method="POST" action="../controllers/login.php">
 			<div class="form-floating">
 				<input type="text" class="form-control" name="username" id="username">
