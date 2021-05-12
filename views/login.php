@@ -16,7 +16,7 @@
 				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		<?php endif ?>
-		<form method="POST" action="../controllers/login.php">
+		<form method="POST" action="../controllers/login_controller.php">
 			<div class="form-floating">
 				<input type="text" class="form-control" name="username" id="username">
 				<label for="username">Login</label>

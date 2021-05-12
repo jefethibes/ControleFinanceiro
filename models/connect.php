@@ -21,8 +21,35 @@ class ConnectDB
 		}
 	}
 
+	public function list_one($table, $id)
+	{
+		try{
+			$sql = "SELECT * FROM $table where id = $id;";
+			$values = pg_query($this->db, $sql);
+			pg_close($this->db);
+			if (pg_num_rows($values) == 0) {
+				return false;
+			} else {
+				return $values;
+			}
+		} catch (Exception $e) {
+			return $e;
+		}
+	}
 
-	public function insert($table, $values)
+	public function new_delete($table, $id)
+	{
+		try{
+			$sql = "DELETE FROM $table WHERE id = $id";
+			pg_query($this->db, $sql);
+			pg_close($this->db);
+			return true;
+		} catch (Exception $e) {
+			return false;
+		}
+	}	
+
+	public function new_insert($table, $values)
 	{
 		try {
 			$sql = "INSERT INTO $table(";
@@ -55,19 +82,24 @@ class ConnectDB
 		}
 	}
 
-	public function delete($table, $id)
+	public function new_list($table)
 	{
 		try{
-			$sql = "DELETE FROM $table WHERE id = $id";
-			pg_query($this->db, $sql);
+			$sql = "SELECT * FROM $table;";
+			$values = pg_query($this->db, $sql);
 			pg_close($this->db);
-			return true;
+			echo var_dump($values);
+			if(pg_num_rows($values) == 0){
+				return false;
+			} else {
+				return pg_fetch_all($values);
+			} 
 		} catch (Exception $e) {
-			return false;
+			return $e;
 		}
 	}
 
-	public function update($table, $values, $id)
+	public function new_update($table, $values, $id)
 	{
 		try{
 			$sql = "UPDATE $table SET ";
@@ -93,40 +125,7 @@ class ConnectDB
 		} catch (Exception $e) {
 			return false;
 		}
-	}
-
-	public function list($table)
-	{
-		try{
-			$sql = "SELECT * FROM $table;";
-			$values = pg_query($this->db, $sql);
-			pg_close($this->db);
-			echo var_dump($values);
-			if(pg_num_rows($values) == 0){
-				return false;
-			} else {
-				return $values;
-			} 
-		} catch (Exception $e) {
-			return $e;
-		}
-	}
-
-	public function list_one($table, $id)
-	{
-		try{
-			$sql = "SELECT * FROM $table where id = $id;";
-			$values = pg_query($this->db, $sql);
-			pg_close($this->db);
-			if (pg_num_rows($values) == 0) {
-				return false;
-			} else {
-				return $values;
-			}
-		} catch (Exception $e) {
-			return $e;
-		}
-	}
+	}					
 }
 
 ?>
