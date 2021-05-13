@@ -12,17 +12,22 @@
 		function __construct()
 		{
 			$this->db = new UsersModel();
+			$this->insert_user();
 		}
 
 		public function insert_user(){
 			$this->db->setUsername($_POST["username"]);
-			$this->db->setPassword($password = $_POST["password"]);
+			$this->db->setPassword($_POST["password"]);
 			$result = $this->db->new_user();
 			if (!$result) {
-				echo "false";
+				header("Location: ../views/users.php?log=1");
 			} else {
-				echo "true"
+				header("Location: ../views/users.php?log=0");
 			}
 		}
+	}
+
+	if ($_GET["crud"] == 0) {
+		new UsersController();
 	}
 ?>

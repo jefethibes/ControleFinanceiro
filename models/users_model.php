@@ -34,8 +34,8 @@
 		{
 			$array = array
 			(
-				$this->getUsername();
-				$this->getPassword();
+				"username" => $this->getUsername(),
+				"password" => $this->getPassword()
 			);
 			return $this->new_insert("users", $array);
 		}
