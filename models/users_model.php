@@ -7,8 +7,14 @@ include("users_connect.php");
 class UsersModel extends UsersConnect
 {
 	
+	private $id;
 	private $username;
 	private $password;
+
+	public function setId($int)
+	{
+		$this->id = $int;
+	}
 
 	public function setUsername($string)
 	{
@@ -18,6 +24,11 @@ class UsersModel extends UsersConnect
 	public function setPassword($string)
 	{
 		$this->password = $string;
+	}
+
+	public function getId()
+	{
+		return $this->id;
 	}
 
 	public function getUsername()
@@ -32,7 +43,17 @@ class UsersModel extends UsersConnect
 
 	public function add_user()
 	{
-		return $this->insert_user($this->getUsername(), $this->getPassword());
+		return $this->insert($this->getUsername(), $this->getPassword());
+	}
+
+	public function del_user()
+	{
+		return $this->delete($this->getId());
+	}
+
+	public function alt_user()
+	{
+		return $this->update($this->getId(), $this->getUsername(), $this->getPassword());
 	}
 
 }
