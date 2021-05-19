@@ -16,11 +16,7 @@
 	if ($dados == false) {
 		header("Location: ../../views/login.php?log=0");
 	} else {
-		if ($dados["password"] == $password) {
-			$_SESSION["username"] = $username;
-			header("Location: ../../views/home.php");
-		} else {
-			header("Location: ../../views/home.php");
-		}
+		$_SESSION["username"] = $username;
+		header("Location: ../../views/home.php");
 	}
 ?>

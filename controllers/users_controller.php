@@ -1,33 +1,44 @@
 <?php
-	/**
-	 * 
-	 */
-	include("../models/users_model.php");
+/**
+ * 
+ */
+include("../models/users_model.php");
 
-	class UsersController
+class UsersController
+{
+	
+	private $manager;
+
+	function __construct()
 	{
-		
-		private $db;
-
-		function __construct()
-		{
-			$this->db = new UsersModel();
-			$this->insert_user();
-		}
-
-		public function insert_user(){
-			$this->db->setUsername($_POST["username"]);
-			$this->db->setPassword($_POST["password"]);
-			$result = $this->db->new_user();
-			if (!$result) {
-				header("Location: ../views/users.php?log=1");
-			} else {
-				header("Location: ../views/users.php?log=0");
-			}
+		$this->manager = new UsersModel();
+		if ($_GET["log"] == "insert") {
+			$this->new_user();
+		} elseif ($_GET["log"] == "delete") {
+			$this->remove_user();
 		}
 	}
 
-	if ($_GET["crud"] == 0) {
-		new UsersController();
+	public function new_user(){
+		$this->manager->setUsername($_POST["username"]);
+		$this->manager->setPassword($_POST["password"]);
+		$result = $this->manager->add_user();
+		if (!$result) {
+			header("Location: ../views/users.php?log=0&&method=insert");
+		} else {
+			header("Location: ../views/users.php?log=1&&method=insert");
+		}
 	}
+
+	public function remove_user(){
+		$result = $this->manager->delete_user($_GET["id"]);
+		if (!$result) {
+			header("Location: ../views/users.php?log=0&&method=delete");
+		} else {
+			header("Location: ../views/users.php?log=1&&method=delete");
+		}
+	}
+}
+
+new UsersController();
 ?>

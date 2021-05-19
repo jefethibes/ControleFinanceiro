@@ -21,12 +21,18 @@ class ConnectDB
 		}
 	}
 
-	public function list_one($table, $id)
+	/*public function list_one($table, $array)
 	{
 		try{
-			$sql = "SELECT * FROM $table where id = $id;";
+			foreach ($array as $key => $value) {
+				$sql = "SELECT * FROM $table where $key = ";
+				if (is_numeric($value)) {
+					$sql .= $value .= ";";
+				} else {
+					$sql .= "'$value';";
+				}
+			}
 			$values = pg_query($this->db, $sql);
-			pg_close($this->db);
 			if (pg_num_rows($values) == 0) {
 				return false;
 			} else {
@@ -75,7 +81,6 @@ class ConnectDB
 			}
 			$sql .= $columns .= $lines;
 			pg_query($this->db, $sql);
-			pg_close($this->db);
 			return true;
 		} catch (Exception $e) {
 			return false;
@@ -88,7 +93,6 @@ class ConnectDB
 			$sql = "SELECT * FROM $table;";
 			$values = pg_query($this->db, $sql);
 			pg_close($this->db);
-			echo var_dump($values);
 			if(pg_num_rows($values) == 0){
 				return false;
 			} else {
@@ -125,7 +129,7 @@ class ConnectDB
 		} catch (Exception $e) {
 			return false;
 		}
-	}					
+	}*/					
 }
 
 ?>
