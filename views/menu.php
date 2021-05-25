@@ -13,7 +13,7 @@
             <a class="nav-link" href=""><i class="bi bi-bar-chart-line"></i> Trades<span class="sr-only"></span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=""><i class="bi bi-house-door"></i> Empresas<span class="sr-only"></span></a>
+            <a class="nav-link" href="empresas.php?log=list"><i class="bi bi-house-door"></i> Empresas<span class="sr-only"></span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="users.php?log=list"><i class="bi bi-people"></i> Usuários<span class="sr-only"></span></a>

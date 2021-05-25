@@ -55,6 +55,5 @@ class UsersModel extends UsersConnect
 	{
 		return $this->update($this->getId(), $this->getUsername(), $this->getPassword());
 	}
-
 }
 ?>
