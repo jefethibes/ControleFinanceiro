@@ -1,10 +1,22 @@
-<?php 
-	if (!isset($_SESSION)) session_start();
+<?php
+/**
+  * 
+  */
+ class Session
+ {
+ 	
+ 	function __construct()
+ 	{
+ 		if (!isset($_SESSION)) session_start();
 
-	if (!isset($_SESSION["username"])) {
-		
-		session_destroy();
+		if (!isset($_SESSION["username"])) {
+			
+			session_destroy();
 
-		header("Location: ../views/login.php?log=null");
-	}
+			header("Location: ../views/login.php?log=null");
+		}
+ 	}
+ } 
+
+new Session();
 ?>

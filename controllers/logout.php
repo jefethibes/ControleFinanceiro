@@ -1,12 +1,23 @@
 <?php
-	session_start();
+/**
+ * 
+ */
+class Logout
+{
+	
+	function __construct()
+	{
+		session_start();
 
-	$token = md5(session_id());
+		$token = md5(session_id());
 
-	if (isset($_GET["token"]) && $_GET["token"] === $token) {
-		session_destroy();
-		header("Location: ../../views/login.php?log=null");
-		exit();
+		if (isset($_GET["token"]) && $_GET["token"] === $token) {
+			session_destroy();
+			header("Location: ../../views/login.php?log=null");
+			exit();
+		}
 	}
+}
 
+new Logout();
 ?>

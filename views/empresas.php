@@ -72,7 +72,7 @@
                 <?php if ($_GET["method"] == "insert"): ?>
                     Empresa cadastrada com sucesso! :)
                 <?php elseif ($_GET["method"] == "delete"): ?>
-                    Empresa removido com sucesso! :)
+                    Empresa removida com sucesso! :)
                 <?php elseif ($_GET["method"] == "update"): ?>
                     Empresa alterado com sucesso! :)
                 <?php endif ?>

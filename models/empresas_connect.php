@@ -52,5 +52,12 @@ class EmpresasConnect extends ConnectDB
 		$result = pg_query($this->db, $sql);
 		return pg_fetch_all($result);
 	}
+
+	public function list_codigo()
+	{
+		$sql = "SELECT * FROM empresas WHERE codigo;";
+		$result = pg_query($this->db, $sql);
+		return pg_fetch_all($result);
+	}
 }
 ?>
