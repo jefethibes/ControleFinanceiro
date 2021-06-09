@@ -12,21 +12,22 @@ class InvestimentosModel extends InvestimentosConnect
 	private $valor;
 	private $quantidade;
 	private $data_compra;
+	private $valor_venda;
 	private $data_venda;
 
 	public function setId($int)
 	{
-		$this->id = $id;
+		$this->id = $int;
 	}
 
 	public function setCodigo($string)
 	{
-		$this->codigo = $codigo;
+		$this->codigo = $string;
 	}
 
 	public function setValor($float)
 	{
-		$this->valor = $valor;
+		$this->valor = $float;
 	}
 
 	public function setQuantidade($int)
@@ -37,6 +38,11 @@ class InvestimentosModel extends InvestimentosConnect
 	public function setDataCompra($data)
 	{
 		$this->data_compra = $data;
+	}
+
+	public function setValorVenda($float)
+	{
+		$this->valor_venda = $float;
 	}
 
 	public function setDataVenda($data)
@@ -69,6 +75,11 @@ class InvestimentosModel extends InvestimentosConnect
 		return $this->data_compra;
 	}
 
+	public function getValorVenda()
+	{
+		return $this->valor_venda;
+	}
+
 	public function getDataVenda()
 	{
 		return $this->data_venda;
@@ -76,7 +87,7 @@ class InvestimentosModel extends InvestimentosConnect
 
 	public function add_investimentos()
 	{
-		return $this->insert($this->getCodigo(), $this->getValor(), $this->getQuantidade(), $this->getDataCompra(), $this->getDataVenda());
+		return $this->insert($this->getCodigo(), $this->getValor(), $this->getQuantidade(), $this->getDataCompra(), $this->getValorVenda(), $this->getDataVenda());
 	}
 }
 ?>

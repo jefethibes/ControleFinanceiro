@@ -34,7 +34,7 @@
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-success">Salvar</button>
                         </div>
-                        <br>
+                        <p>
                     </form>
                 </div>
             </div>
@@ -111,6 +111,7 @@
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                                 <button type="submit" class="btn btn-success">Salvar</button>
                                             </div>
+                                            <br>
                                         </form>
                                     </div>
                                 </div>

@@ -51,7 +51,7 @@
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-success">Salvar</button>
                         </div>
-                        <br>
+                        <p>
                     </form>
                 </div>
             </div>
@@ -177,7 +177,7 @@
     </div>
 </body>
 <?php
-    include("base.php")
+    include("base.php");
 ?>
 <script src="../static/js/pagination.js"></script>
 <script src="../static/js/search.js"></script>

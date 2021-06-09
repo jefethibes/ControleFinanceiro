@@ -27,6 +27,7 @@ class InvestimentosController
 		$this->manager->setValor($_POST["valor"]);
 		$this->manager->setQuantidade($_POST["quantidade"]);
 		$this->manager->setDataCompra($_POST["data_compra"]);
+		$this->manager->setValorVenda($_POST["valor_venda"]);
 		$this->manager->setDataVenda($_POST["data_venda"]);
 		$result = $this->manager->add_investimentos();
 		if (!$result) {
@@ -36,4 +37,6 @@ class InvestimentosController
 		}
 	}
 }
+
+new InvestimentosController();
 ?>
