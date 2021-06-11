@@ -37,7 +37,7 @@ class EmpresasController
 
 	public function remove_empresa()
 	{
-		$this->manager->setId($_GET["id"]);
+		$this->manager->setCodigo($_GET["codigo"]);
 		$result = $this->manager->del_empresas();
 		if (!$result) {
 			header("Location: ../views/empresas.php?log=0&&method=delete");

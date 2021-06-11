@@ -119,7 +119,7 @@
                     </tr>
                     <tr>
                         <th class="text-center">Código</th>
-                        <th class="text-center">Valor</th>
+                        <th class="text-center">Valor C/</th>
                         <th class="text-center">Qnt</th>
                         <th class="text-center">Total C/</th>
                         <th class="text-center">Data C/</th>
@@ -141,7 +141,7 @@
                                     </div>
                                     <br>
                                     <div class="container">
-                                         <form class="row g-3" id="formUsers" method="post" action="../controllers/empresas_controller.php?log=update&&id=<?php echo $values['id']; ?>">
+                                         <form class="row g-3" id="formUsers" method="post" action="../controllers/investimentos_controller.php?log=update&&id=<?php echo $values['id']; ?>">
                                             <div class="row">                        
                                                 <div class="form-group col-md-6">
                                                     <label>Código Empresa:</label>
@@ -159,7 +159,7 @@
                                             </div>
                                             <div class="row">   
                                                 <div class="form-group col-md-6">
-                                                    <label>Valor:</label>
+                                                    <label>Valor Compra:</label>
                                                     <input class="form-control" type="number" step="0.01" name="valor" id="valor" value="<?php echo $values['valor']; ?>" required>
                                                 </div>                     
                                                 <div class="form-group col-md-6">
@@ -170,7 +170,7 @@
                                             <div class="row">   
                                                 <div class="form-group col-md-6">
                                                     <label>Valor Venda:</label>
-                                                    <input class="form-control" type="number" step="0.01" name="valor" id="valor" value="<?php echo $values['valor_venda']; ?>" required>
+                                                    <input class="form-control" type="number" step="0.01" name="valor_venda" id="valor_venda" value="<?php echo $values['valor_venda']; ?>" required>
                                                 </div>                     
                                                 <div class="form-group col-md-6">
                                                     <label>Data Venda:</label>
@@ -202,7 +202,7 @@
                                 <td class="text-center"><?php echo $values["valor_venda"]*$values["quantidade"]; ?></td>
                             <?php endif; ?>
                             <td class="text-center"><?php echo ($values["valor"]*$values["quantidade"])-($values["valor_venda"]*$values["quantidade"]); ?></td>
-                            <td class="text-center"><a type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#modalForm<?php echo $values['id']; ?>"><i class="bi bi-chat-square-text"></i></a> / <a href="../controllers/empresas_controller.php?log=delete&&id=<?php echo $values['id']; ?>" class="btn btn-link-danger btn-sm"><i class="bi bi-trash"></i></a></td>
+                            <td class="text-center"><a type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#modalForm<?php echo $values['id']; ?>"><i class="bi bi-chat-square-text"></i></a> / <a href="../controllers/investimentos_controller.php?log=delete&&id=<?php echo $values['id']; ?>" class="btn btn-link-danger btn-sm"><i class="bi bi-trash"></i></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

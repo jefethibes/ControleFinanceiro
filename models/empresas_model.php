@@ -70,7 +70,7 @@ class EmpresasModel extends EmpresasConnect
 
 	public function del_empresas()
 	{
-		return $this->delete($this->getId());
+		return $this->delete($this->getCodigo());
 	}
 
 	public function alt_empresas()

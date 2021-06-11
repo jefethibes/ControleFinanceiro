@@ -19,11 +19,17 @@ class EmpresasConnect extends ConnectDB
 		}
 	}
 
-	public function delete($id)
+	public function delete($codigo)
 	{
-		$sql = "DELETE FROM empresas WHERE id = $id;";
-		pg_query($this->db, $sql);
-		return true;
+		$verifica_investimentos = "SELECT * FROM investimentos WHERE codigo_empresa = '$codigo';";
+		$result = pg_query($this->db, $verifica_investimentos);
+		if (pg_num_rows($result) > 0) {
+			return false;
+		} else {
+			$sql = "DELETE FROM empresas WHERE codigo = '$codigo';";
+			pg_query($this->db, $sql);
+			return true;
+		}
 	}
 
 	public function update($id, $razao_social, $cnpj, $codigo, $tipo)

@@ -163,7 +163,7 @@
                             <td class="text-center"><?php echo $values["cnpj"]; ?></td>
                             <td class="text-center"><?php echo $values["codigo"]; ?></td>
                             <td class="text-center"><?php echo $values["tipo"]; ?></td>
-                            <td class="text-center"><a type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#modalForm<?php echo $values['id']; ?>"><i class="bi bi-chat-square-text"></i></a> / <a href="../controllers/empresas_controller.php?log=delete&&id=<?php echo $values['id']; ?>" class="btn btn-link-danger btn-sm"><i class="bi bi-trash"></i></a></td>
+                            <td class="text-center"><a type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#modalForm<?php echo $values['id']; ?>"><i class="bi bi-chat-square-text"></i></a> / <a href="../controllers/empresas_controller.php?log=delete&&codigo=<?php echo $values['codigo']; ?>" class="btn btn-link-danger btn-sm"><i class="bi bi-trash"></i></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

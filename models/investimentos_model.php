@@ -89,5 +89,15 @@ class InvestimentosModel extends InvestimentosConnect
 	{
 		return $this->insert($this->getCodigo(), $this->getValor(), $this->getQuantidade(), $this->getDataCompra(), $this->getValorVenda(), $this->getDataVenda());
 	}
+
+	public function del_investimentos()
+	{
+		return $this->delete($this->getId());
+	}
+
+	public function alt_investimentos()
+	{
+		return $this->update($this->getId(), $this->getCodigo(), $this->getValor(), $this->getQuantidade(), $this->getDataCompra(), $this->getValorVenda(), $this->getDataVenda());
+	}
 }
 ?>
