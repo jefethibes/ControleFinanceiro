@@ -6,6 +6,7 @@
     include("../models/users_model.php");
 
     $user = new UsersModel();
+    $lista_usuarios = $user->list();
 ?>
 
 <body>
@@ -17,7 +18,7 @@
        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Novo usuário:</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Novo Usuário:</h5>
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Fechar"></button>
                 </div>
                 <div class="container">
@@ -48,7 +49,7 @@
                 <?php elseif ($_GET["method"] == "delete"): ?>
                     Usuário não pode ser removido! É necessário ter no minimo um usuário cadastrado :(
                 <?php endif ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php elseif ($_GET["log"] == 1): ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -77,7 +78,7 @@
                                     <option value="100">100</option>
                                     <option value="999999999">Todos</option>
                                 </select>
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalForm"><i class="bi bi-person-plus"></i> add usuário</button>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalForm"><i class="bi bi-plus-square"></i></button>
                             </div>
                         </th>
                     </tr>
@@ -87,12 +88,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($user->list() as $values): ?>
+                    <?php foreach ($lista_usuarios as $values): ?>
                         <div id="modalForm<?php echo $values['id']; ?>" class="modal fade" tabindex="-1" role="dialog">
                            <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Alterar usuário:</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Alterar Usuário:</h5>
                                         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Fechar"></button>
                                     </div>
                                     <br>

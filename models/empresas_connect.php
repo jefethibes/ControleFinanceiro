@@ -22,8 +22,10 @@ class EmpresasConnect extends ConnectDB
 	public function delete($codigo)
 	{
 		$verifica_investimentos = "SELECT * FROM investimentos WHERE codigo_empresa = '$codigo';";
-		$result = pg_query($this->db, $verifica_investimentos);
-		if (pg_num_rows($result) > 0) {
+		$result_investimentos = pg_query($this->db, $verifica_investimentos);
+		$verifica_proventos = "SELECT * FROM proventos WHERE codigo_empresa = '$codigo';";
+		$result_proventos = pg_query($this->db, $verifica_proventos);
+		if (pg_num_rows($result_investimentos) > 0 || pg_num_rows($result_proventos) > 0) {
 			return false;
 		} else {
 			$sql = "DELETE FROM empresas WHERE codigo = '$codigo';";

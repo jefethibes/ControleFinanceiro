@@ -6,6 +6,7 @@
     include("../models/empresas_model.php");
 
     $empresa = new EmpresasModel();
+    $lista_empresas = $empresa->list();
 ?>
 
 <body>
@@ -17,7 +18,7 @@
        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nova empresa:</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Nova Empresa:</h5>
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Fechar"></button>
                 </div>
                 <div class="container">
@@ -63,9 +64,9 @@
                 <?php if ($_GET["method"] == "insert"): ?>
                     Código já cadastrado! :(
                 <?php elseif ($_GET["method"] == "delete"): ?>
-                    Empresa não pode ser removido! Existem investimentos cadastrados :(
+                    Empresa não pode ser removido! Existem investimentos ou proventos cadastrados :(
                 <?php endif ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php elseif ($_GET["log"] == 1): ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -97,7 +98,7 @@
                                     <option value="100">100</option>
                                     <option value="999999999">Todos</option>
                                 </select>
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalForm"><i class="bi bi-person-plus"></i> add empresa</button>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalForm"><i class="bi bi-plus-square"></i></button>
                             </div>
                         </th>
                     </tr>
@@ -110,12 +111,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($empresa->list() as $values): ?>
+                    <?php foreach ($lista_empresas as $values): ?>
                         <div id="modalForm<?php echo $values['id']; ?>" class="modal fade" tabindex="-1" role="dialog">
                            <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Alterar empresa:</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Alterar Empresa:</h5>
                                         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Fechar"></button>
                                     </div>
                                     <br>
