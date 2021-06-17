@@ -14,6 +14,7 @@ class InvestimentosModel extends InvestimentosConnect
 	private $data_compra;
 	private $valor_venda;
 	private $data_venda;
+	private $tipo_investimento;
 
 	public function setId($int)
 	{
@@ -48,6 +49,11 @@ class InvestimentosModel extends InvestimentosConnect
 	public function setDataVenda($data)
 	{
 		$this->data_venda = $data;
+	}
+
+	public function setTipoInvestimento($string)
+	{
+		$this->tipo_investimento = $string;
 	}
 
 	public function getId()
@@ -85,9 +91,14 @@ class InvestimentosModel extends InvestimentosConnect
 		return $this->data_venda;
 	}
 
+	public function getTipoInvestimento()
+	{
+		return $this->tipo_investimento;
+	}
+
 	public function add_investimentos()
 	{
-		return $this->insert($this->getCodigo(), $this->getValor(), $this->getQuantidade(), $this->getDataCompra(), $this->getValorVenda(), $this->getDataVenda());
+		return $this->insert($this->getCodigo(), $this->getValor(), $this->getQuantidade(), $this->getDataCompra(), $this->getValorVenda(), $this->getDataVenda(), $this->getTipoInvestimento());
 	}
 
 	public function del_investimentos()
@@ -97,7 +108,7 @@ class InvestimentosModel extends InvestimentosConnect
 
 	public function alt_investimentos()
 	{
-		return $this->update($this->getId(), $this->getCodigo(), $this->getValor(), $this->getQuantidade(), $this->getDataCompra(), $this->getValorVenda(), $this->getDataVenda());
+		return $this->update($this->getId(), $this->getCodigo(), $this->getValor(), $this->getQuantidade(), $this->getDataCompra(), $this->getValorVenda(), $this->getDataVenda(), $this->getTipoInvestimento());
 	}
 }
 ?>

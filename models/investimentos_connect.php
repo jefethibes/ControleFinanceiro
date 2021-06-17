@@ -7,12 +7,12 @@ include("connect.php");
 class InvestimentosConnect extends ConnectDB
 {
 	
-	public function insert($codigo, $valor, $quantidade, $data_compra, $valor_venda, $data_venda)
+	public function insert($codigo, $valor, $quantidade, $data_compra, $valor_venda, $data_venda, $tipo_investimento)
 	{
 		if (!$data_venda || !$valor_venda) {
-			$sql = "INSERT INTO investimentos(codigo_empresa, valor, quantidade, data_compra) VALUES ('$codigo', $valor, $quantidade, '$data_compra');";
+			$sql = "INSERT INTO investimentos(codigo_empresa, valor, quantidade, data_compra, tipo_investimento) VALUES ('$codigo', $valor, $quantidade, '$data_compra', '$tipo_investimento');";
 		} else {
-			$sql = "INSERT INTO investimentos(codigo_empresa, valor, quantidade, data_compra, valor_venda, data_venda) VALUES ('$codigo', $valor, $quantidade, '$data_compra', $valor_venda, '$data_venda');";
+			$sql = "INSERT INTO investimentos(codigo_empresa, valor, quantidade, data_compra, valor_venda, data_venda, tipo_investimento) VALUES ('$codigo', $valor, $quantidade, '$data_compra', $valor_venda, '$data_venda', '$tipo_investimento');";
 		}
 		pg_query($this->db, $sql);
 		return true;
@@ -39,12 +39,14 @@ class InvestimentosConnect extends ConnectDB
 		return true;
 	}
 
-	public function update($id, $codigo, $valor, $quantidade, $data_compra, $valor_venda, $data_venda)
+	public function update($id, $codigo, $valor, $quantidade, $data_compra, $valor_venda, $data_venda, $tipo_investimento)
 	{
 		if (!$data_venda || !$valor_venda) {
-			$sql = "UPDATE investimentos SET codigo_empresa = '$codigo', valor = $valor, quantidade = $quantidade, data_compra = '$data_compra' WHERE id = $id;";
+			return false;
+		} elseif(!$data_venda && !$valor_venda) {
+			$sql = "UPDATE investimentos SET codigo_empresa = '$codigo', valor = $valor, quantidade = $quantidade, data_compra = '$data_compra', tipo_investimento = '$tipo_investimento' WHERE id = $id;";
 		} else {
-			$sql = "UPDATE investimentos SET codigo_empresa = '$codigo', valor = $valor, quantidade = $quantidade, data_compra = '$data_compra', valor_venda = $valor_venda, data_venda = '$data_venda' WHERE id = $id;";
+			$sql = "UPDATE investimentos SET codigo_empresa = '$codigo', valor = $valor, quantidade = $quantidade, data_compra = '$data_compra', valor_venda = $valor_venda, data_venda = '$data_venda', tipo_investimento = '$tipo_investimento' WHERE id = $id;";
 		}
 		pg_query($this->db, $sql);
 		return true;

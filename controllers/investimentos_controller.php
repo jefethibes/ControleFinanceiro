@@ -29,6 +29,7 @@ class InvestimentosController
 		$this->manager->setDataCompra($_POST["data_compra"]);
 		$this->manager->setValorVenda($_POST["valor_venda"]);
 		$this->manager->setDataVenda($_POST["data_venda"]);
+		$this->manager->setTipoInvestimento($_POST["tipo_investimento"]);
 		$result = $this->manager->add_investimentos();
 		if (!$result) {
 			header("Location: ../views/investimentos.php?log=0&&method=insert");
@@ -57,9 +58,10 @@ class InvestimentosController
 		$this->manager->setDataCompra($_POST["data_compra"]);
 		$this->manager->setValorVenda($_POST["valor_venda"]);
 		$this->manager->setDataVenda($_POST["data_venda"]);
+		$this->manager->setTipoInvestimento($_POST["tipo_investimento"]);
 		$result = $this->manager->alt_investimentos();
 		if (!$result) {
-			header("Location: ../views/investimentos.php?log=0&&method=insert");
+			header("Location: ../views/investimentos.php?log=0&&method=update");
 		} else {
 			header("Location: ../views/investimentos.php?log=1&&method=update");
 		}

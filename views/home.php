@@ -12,22 +12,5 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
-<?php
-    include("base.php")
-?>
 </html>

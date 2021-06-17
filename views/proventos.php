@@ -213,9 +213,6 @@
         </div>
     </div>
 </body>
-<?php
-    include("base.php");
-?>
 <script src="../static/js/pagination.js"></script>
 <script src="../static/js/search.js"></script>
 </html>
