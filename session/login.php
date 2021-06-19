@@ -2,7 +2,7 @@
 /**
  * 
  */
-include("../models/login_model.php");
+include("../models/connections/valida_login.php");
 
 class Login
 {
@@ -12,7 +12,7 @@ class Login
 		session_start();
 
 		if (!empty($_POST) and (empty($_POST["username"]) or empty($_POST["password"]))) {
-			header("Location: ../../views/login.php");
+			header("Location: ../views/home/login.php");
 		}
 
 		$username = $_POST["username"];
@@ -22,10 +22,10 @@ class Login
 		$dados = $db->validate($username, $password);
 
 		if ($dados == false) {
-			header("Location: ../../views/login.php?log=0");
+			header("Location: ../views/home/login.php?log=0");
 		} else {
 			$_SESSION["username"] = $username;
-			header("Location: ../../views/home.php");
+			header("Location: ../views/home/home.php");
 		}
 	}
 }

@@ -7,6 +7,11 @@
                 <th><input type="text" id="txtColuna3" placeholder="Busca" class="form-control" /></th>
                 <th><input type="text" id="txtColuna4" placeholder="Busca" class="form-control" /></th>
                 <th><input type="text" id="txtColuna5" placeholder="Busca" class="form-control" /></th>
+                <th><input type="text" id="txtColuna6" placeholder="Busca" class="form-control" /></th>
+                <th><input type="text" id="txtColuna7" placeholder="Busca" class="form-control" /></th>
+                <th><input type="text" id="txtColuna8" placeholder="Busca" class="form-control" /></th>
+                <th><input type="text" id="txtColuna9" placeholder="Busca" class="form-control" /></th>
+                <th><input type="text" id="txtColuna10" placeholder="Busca" class="form-control" /></th>
                 <th>
                     <div class="input-group">
                         <select name="state" id="maxRows" class="form-control">
@@ -17,6 +22,7 @@
                             <option value="100">100</option>
                             <option value="999999999">Todos</option>
                         </select>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalForm"><i class="bi bi-plus-square"></i></button>
                     </div>
                 </th>
             </tr>
@@ -26,12 +32,17 @@
                 <th class="text-center">Qnt</th>
                 <th class="text-center">Total C/</th>
                 <th class="text-center">Data C/</th>
+                <th class="text-center">Valor V/</th>
+                <th class="text-center">Data V/</th>
+                <th class="text-center">Total V/</th>
+                <th class="text-center">Lucro/Prejuizo</th>
+                <th class="text-center">Tipo</th>
                 <th class="text-center">Alt/Del</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($lista_investimentos as $values): ?>
-                <?php if(!$values["valor_venda"] && $values["tipo_investimento"] != "Buy and Hold" && $values["tipo_investimento"] != "Day Trade"): ?>
+                <?php if($values["valor_venda"]): ?>
                     <div id="modalForm<?php echo $values['id']; ?>" class="modal fade" tabindex="-1" role="dialog">
                        <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -41,7 +52,7 @@
                                 </div>
                                 <br>
                                 <div class="container">
-                                     <form class="row g-3" id="formUsers" method="post" action="../controllers/investimentos_controller.php?log=update&&id=<?php echo $values['id']; ?>">
+                                     <form class="row g-3" id="formUsers" method="post" action="../../controllers/investimentos_controller.php?log=update&&id=<?php echo $values['id']; ?>">
                                         <div class="row">                        
                                             <div class="form-group col-md-4">
                                                 <label>Código Empresa:</label>
@@ -103,7 +114,17 @@
                         <td class="text-center"><?php echo $values["quantidade"]; ?></td>
                         <td class="text-center"><?php echo $values["valor"]*$values["quantidade"]; ?></td>
                         <td class="text-center"><?php echo $values["data_compra"]; ?></td>
-                        <td class="text-center"><a type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#modalForm<?php echo $values['id']; ?>"><i class="bi bi-chat-square-text"></i></a> / <a href="../controllers/investimentos_controller.php?log=delete&&id=<?php echo $values['id']; ?>" class="btn btn-link-danger btn-sm"><i class="bi bi-trash"></i></a></td>
+                        <td class="text-center"><?php echo $values["valor_venda"]; ?></td>
+                        <td class="text-center"><?php echo $values["data_venda"]; ?></td>
+                        <?php if (!$values["valor_venda"]): ?>
+                            <td class="text-center"></td>
+                            <td class="text-center"></td>
+                        <?php else: ?> 
+                            <td class="text-center"><?php echo $values["valor_venda"]*$values["quantidade"]; ?></td>
+                            <td class="text-center"><?php echo ($values["valor_venda"]*$values["quantidade"])-($values["valor"]*$values["quantidade"]); ?></td>
+                        <?php endif; ?>
+                        <td class="text-center"><?php echo $values["tipo_investimento"]; ?></td>
+                        <td class="text-center"><a type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#modalForm<?php echo $values['id']; ?>"><i class="bi bi-chat-square-text"></i></a> / <a href="../../controllers/investimentos_controller.php?log=delete&&id=<?php echo $values['id']; ?>" class="btn btn-link-danger btn-sm"><i class="bi bi-trash"></i></a></td>
                     </tr>
                 <?php endif; ?>
             <?php endforeach; ?>

@@ -2,17 +2,17 @@
 <html lang="pt-br">
 
 <?php
-    include("head.php");
-    include("../models/proventos_model.php");
+    include("../bases/head.php");
+    include("../../models/connections/proventos_connect.php");
 
-    $proventos = new ProventosModel();
+    $proventos = new ProventosConnect();
     $lista_proventos = $proventos->list();
     $lista_codigos = $proventos->list_codigo();
 ?>
 
 <body>
     <?php
-        include("menu.php");
+        include("../bases/menu.php");
     ?>
     <br>
     <div id="modalForm" class="modal fade" tabindex="-1" role="dialog">
@@ -23,7 +23,7 @@
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Fechar"></button>
                 </div>
                 <div class="container">
-                    <form class="row g-3" id="formUsers" method="post" action="../controllers/proventos_controller.php?log=insert">
+                    <form class="row g-3" id="formUsers" method="post" action="../../controllers/proventos_controller.php?log=insert">
                         <div class="form-row">
                             <div class="row">                        
                                 <div class="form-group col-md-6">
@@ -144,7 +144,7 @@
                                     </div>
                                     <br>
                                     <div class="container">
-                                         <form class="row g-3" id="formUsers" method="post" action="../controllers/proventos_controller.php?log=update&&id=<?php echo $values['id']; ?>">
+                                         <form class="row g-3" id="formUsers" method="post" action="../../controllers/proventos_controller.php?log=update&&id=<?php echo $values['id']; ?>">
                                             <div class="row">                        
                                                 <div class="form-group col-md-6">
                                                     <label>Código Empresa:</label>
@@ -200,7 +200,7 @@
                             <td class="text-center"><?php echo $values["valor"]; ?></td>
                             <td class="text-center"><?php echo $values["mes"]; ?></td>
                             <td class="text-center"><?php echo $values["ano"]; ?></td>
-                            <td class="text-center"><a type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#modalForm<?php echo $values['id']; ?>"><i class="bi bi-chat-square-text"></i></a> / <a href="../controllers/proventos_controller.php?log=delete&&id=<?php echo $values['id']; ?>" class="btn btn-link-danger btn-sm"><i class="bi bi-trash"></i></a></td>
+                            <td class="text-center"><a type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#modalForm<?php echo $values['id']; ?>"><i class="bi bi-chat-square-text"></i></a> / <a href="../../controllers/proventos_controller.php?log=delete&&id=<?php echo $values['id']; ?>" class="btn btn-link-danger btn-sm"><i class="bi bi-trash"></i></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

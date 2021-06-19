@@ -2,16 +2,16 @@
 <html lang="pt-br">
 
 <?php
-    include("head.php");
-    include("../models/users_model.php");
+    include("../bases/head.php");
+    include("../../models/connections/users_connect.php");
 
-    $user = new UsersModel();
+    $user = new UsersConnect();
     $lista_usuarios = $user->list();
 ?>
 
 <body>
     <?php
-        include("menu.php");
+        include("../bases/menu.php");
     ?>
     <br>
     <div id="modalForm" class="modal fade" tabindex="-1" role="dialog">
@@ -22,7 +22,7 @@
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Fechar"></button>
                 </div>
                 <div class="container">
-                    <form class="row g-3" id="formUsers" method="post" action="../controllers/users_controller.php?log=insert">
+                    <form class="row g-3" id="formUsers" method="post" action="../../controllers/users_controller.php?log=insert">
                         <div class="form-group">
                             <label>Username:</label>
                             <input class="form-control" type="text" name="username" id="username" minlength="4" maxlength="20" required>
@@ -98,7 +98,7 @@
                                     </div>
                                     <br>
                                     <div class="container">
-                                        <form class="row g-3" id="formUsers" method="post" action="../controllers/users_controller.php?log=update&&id=<?php echo $values['id']; ?>">
+                                        <form class="row g-3" id="formUsers" method="post" action="../../controllers/users_controller.php?log=update&&id=<?php echo $values['id']; ?>">
                                             <div class="form-group">
                                                 <label>Username:</label>
                                                 <input class="form-control" type="text" name="username" value="<?php echo $values['username']; ?>" minlength="4" maxlength="20" required>
@@ -120,7 +120,7 @@
                         </div>
                         <tr>
                             <td class="text-center"><?php echo $values["username"]; ?></td>
-                            <td class="text-center"><a type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#modalForm<?php echo $values['id']; ?>"><i class="bi bi-chat-square-text"></i></a> / <a href="../controllers/users_controller.php?log=delete&&id=<?php echo $values['id']; ?>" class="btn btn-link-danger btn-sm"><i class="bi bi-trash"></i></a></td>
+                            <td class="text-center"><a type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#modalForm<?php echo $values['id']; ?>"><i class="bi bi-chat-square-text"></i></a> / <a href="../../controllers/users_controller.php?log=delete&&id=<?php echo $values['id']; ?>" class="btn btn-link-danger btn-sm"><i class="bi bi-trash"></i></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

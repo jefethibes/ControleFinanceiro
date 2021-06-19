@@ -2,16 +2,16 @@
 <html lang="pt-br">
 
 <?php
-    include("head.php");
-    include("../models/empresas_model.php");
+    include("../bases/head.php");
+    include("../../models/connections/empresas_connect.php");
 
-    $empresa = new EmpresasModel();
+    $empresa = new EmpresasConnect();
     $lista_empresas = $empresa->list();
 ?>
 
 <body>
     <?php
-        include("menu.php");
+        include("../bases/menu.php");
     ?>
     <br>
     <div id="modalForm" class="modal fade" tabindex="-1" role="dialog">
@@ -22,7 +22,7 @@
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Fechar"></button>
                 </div>
                 <div class="container">
-                    <form class="row g-3" id="formUsers" method="post" action="../controllers/empresas_controller.php?log=insert">
+                    <form class="row g-3" id="formUsers" method="post" action="../../controllers/empresas_controller.php?log=insert">
                         <div class="form-group">
                             <label>Razão social:</label>
                             <input class="form-control" type="text" name="razaoSocial" id="razaoSocial" minlength="4" maxlength="150" required>
@@ -121,7 +121,7 @@
                                     </div>
                                     <br>
                                     <div class="container">
-                                         <form class="row g-3" id="formUsers" method="post" action="../controllers/empresas_controller.php?log=update&&id=<?php echo $values['id']; ?>">
+                                         <form class="row g-3" id="formUsers" method="post" action="../../controllers/empresas_controller.php?log=update&&id=<?php echo $values['id']; ?>">
 					                        <div class="form-group">
 					                            <label>Razão social:</label>
 					                            <input class="form-control" type="text" name="razaoSocial" id="razaoSocial" minlength="4" maxlength="150" value="<?php echo $values['razao_social']; ?>" required>
@@ -164,7 +164,7 @@
                             <td class="text-center"><?php echo $values["cnpj"]; ?></td>
                             <td class="text-center"><?php echo $values["codigo"]; ?></td>
                             <td class="text-center"><?php echo $values["tipo"]; ?></td>
-                            <td class="text-center"><a type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#modalForm<?php echo $values['id']; ?>"><i class="bi bi-chat-square-text"></i></a> / <a href="../controllers/empresas_controller.php?log=delete&&codigo=<?php echo $values['codigo']; ?>" class="btn btn-link-danger btn-sm"><i class="bi bi-trash"></i></a></td>
+                            <td class="text-center"><a type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#modalForm<?php echo $values['id']; ?>"><i class="bi bi-chat-square-text"></i></a> / <a href="../../controllers/empresas_controller.php?log=delete&&codigo=<?php echo $values['codigo']; ?>" class="btn btn-link-danger btn-sm"><i class="bi bi-trash"></i></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

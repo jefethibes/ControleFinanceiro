@@ -13,7 +13,7 @@
 			
 			session_destroy();
 
-			header("Location: ../views/login.php?log=null");
+			header("Location: ../views/home/login.php?log=null");
 		}
  	}
  } 

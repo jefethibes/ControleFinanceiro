@@ -2,7 +2,7 @@
 /**
  * 
  */
-include("proventos_connect.php");
+include("../models/connections/proventos_connect.php");
 
 class ProventosModel extends ProventosConnect
 {

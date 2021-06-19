@@ -13,7 +13,7 @@ class Logout
 
 		if (isset($_GET["token"]) && $_GET["token"] === $token) {
 			session_destroy();
-			header("Location: ../../views/login.php?log=null");
+			header("Location: ../views/home/login.php?log=null");
 			exit();
 		}
 	}

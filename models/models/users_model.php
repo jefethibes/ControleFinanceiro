@@ -2,7 +2,7 @@
 /**
  * 
  */
-include("users_connect.php");
+include("../models/connections/users_connect.php");
 
 class UsersModel extends UsersConnect
 {

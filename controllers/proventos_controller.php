@@ -2,7 +2,7 @@
 /**
  * 
  */
-include("../models/proventos_model.php");
+include("../models/proventos/proventos_model.php");
 
 class ProventosController
 {
@@ -27,9 +27,9 @@ class ProventosController
 		$this->manager->setAno($_POST["ano"]);
 		$result = $this->manager->add_proventos();
 		if (!$result) {
-			header("Location: ../views/proventos.php?log=0&&method=insert");
+			header("Location: ../views/proventos/proventos.php?log=0&&method=insert");
 		} else {
-			header("Location: ../views/proventos.php?log=1&&method=insert");
+			header("Location: ../views/proventos/proventos.php?log=1&&method=insert");
 		}
 	}
 
@@ -38,9 +38,9 @@ class ProventosController
 		$this->manager->setId($_GET["id"]);
 		$result = $this->manager->del_proventos();
 		if (!$result) {
-			header("Location: ../views/proventos.php?log=0&&method=delete");
+			header("Location: ../views/proventos/proventos.php?log=0&&method=delete");
 		} else {
-			header("Location: ../views/proventos.php?log=1&&method=delete");
+			header("Location: ../views/proventos/proventos.php?log=1&&method=delete");
 		}
 	}
 
@@ -53,9 +53,9 @@ class ProventosController
 		$this->manager->setAno($_POST["ano"]);
 		$result = $this->manager->alt_proventos();
 		if (!$result) {
-			header("Location: ../views/proventos.php?log=0&&method=insert");
+			header("Location: ../views/proventos/proventos.php?log=0&&method=insert");
 		} else {
-			header("Location: ../views/proventos.php?log=1&&method=update");
+			header("Location: ../views/proventos/proventos.php?log=1&&method=update");
 		}
 	}
 }

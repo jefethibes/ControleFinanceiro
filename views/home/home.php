@@ -2,12 +2,12 @@
 <html lang="pt-br">
 
 <?php
-    include("head.php");
+    include("../bases/head.php");
 ?>
 
 <body>
     <?php
-        include("menu.php");
+        include("../bases/menu.php");
     ?>
 
 

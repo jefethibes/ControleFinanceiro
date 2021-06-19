@@ -2,7 +2,7 @@
 /**
  * 
  */
-include("investimentos_connect.php");
+include("../models/connections/investimentos_connect.php");
 
 class InvestimentosModel extends InvestimentosConnect
 {

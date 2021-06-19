@@ -2,7 +2,7 @@
 /**
  * 
  */
-include("empresas_connect.php");
+include("../models/connections/empresas_connect.php");
 
 class EmpresasModel extends EmpresasConnect
 {

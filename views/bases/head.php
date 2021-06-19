@@ -1,7 +1,3 @@
-<?php 
-    include("../controllers/session.php");
-?>
-
 <head>
     <meta charset="UTF-8">
     <title>Controle Financeiro</title>

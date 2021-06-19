@@ -2,7 +2,7 @@
 /**
  * 
  */
-include("../models/users_model.php");
+include("../models/models/users_model.php");
 
 class UsersController
 {
@@ -27,9 +27,9 @@ class UsersController
 		$this->manager->setPassword($_POST["password"]);
 		$result = $this->manager->add_user();
 		if (!$result) {
-			header("Location: ../views/users.php?log=0&&method=insert");
+			header("Location: ../views/users/users.php?log=0&&method=insert");
 		} else {
-			header("Location: ../views/users.php?log=1&&method=insert");
+			header("Location: ../views/users/users.php?log=1&&method=insert");
 		}
 	}
 
@@ -38,9 +38,9 @@ class UsersController
 		$this->manager->setId($_GET["id"]);
 		$result = $this->manager->del_user();
 		if (!$result) {
-			header("Location: ../views/users.php?log=0&&method=delete");
+			header("Location: ../views/users/users.php?log=0&&method=delete");
 		} else {
-			header("Location: ../views/users.php?log=1&&method=delete");
+			header("Location: ../views/users/users.php?log=1&&method=delete");
 		}
 	}
 
@@ -51,9 +51,9 @@ class UsersController
 		$this->manager->setPassword($_POST["password"]);
 		$result = $this->manager->alt_user();
 		if (!$result) {
-			header("Location: ../views/users.php?log=0&&method=insert");
+			header("Location: ../views/users/users.php?log=0&&method=insert");
 		} else {
-			header("Location: ../views/users.php?log=1&&method=update");
+			header("Location: ../views/users/users.php?log=1&&method=update");
 		}
 	}
 }

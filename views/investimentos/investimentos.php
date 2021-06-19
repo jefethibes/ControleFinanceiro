@@ -2,17 +2,17 @@
 <html lang="pt-br">
 
 <?php
-    include("head.php");
-    include("../models/investimentos_model.php");
+    include("../bases/head.php");
+    include("../../models/connections/investimentos_connect.php");
 
-    $investimentos = new InvestimentosModel();
+    $investimentos = new InvestimentosConnect();
     $lista_codigos = $investimentos->list_codigo();
     $lista_investimentos = $investimentos->list();
 ?>
 
 <body>
     <?php
-        include("menu.php");
+        include("../bases/menu.php");
     ?>
     <br>
     <div id="modalForm" class="modal fade" tabindex="-1" role="dialog">
@@ -23,7 +23,7 @@
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Fechar"></button>
                 </div>
                 <div class="container">
-                    <form class="row g-3" id="formUsers" method="post" action="../controllers/investimentos_controller.php?log=insert">
+                    <form class="row g-3" id="formUsers" method="post" action="../../controllers/investimentos_controller.php?log=insert">
                         <div class="form-row">
                             <div class="row">                        
                                 <div class="form-group col-md-4">

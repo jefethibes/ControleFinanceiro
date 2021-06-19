@@ -2,7 +2,7 @@
 /**
  * 
  */
-include("../models/investimentos_model.php");
+include("../models/models/investimentos_model.php");
 
 class InvestimentosController
 {
@@ -32,9 +32,9 @@ class InvestimentosController
 		$this->manager->setTipoInvestimento($_POST["tipo_investimento"]);
 		$result = $this->manager->add_investimentos();
 		if (!$result) {
-			header("Location: ../views/investimentos.php?log=0&&method=insert");
+			header("Location: ../views/investimentos/investimentos.php?log=0&&method=insert");
 		} else {
-			header("Location: ../views/investimentos.php?log=1&&method=insert");
+			header("Location: ../views/investimentos/investimentos.php?log=1&&method=insert");
 		}
 	}
 
@@ -43,9 +43,9 @@ class InvestimentosController
 		$this->manager->setId($_GET["id"]);
 		$result = $this->manager->del_investimentos();
 		if (!$result) {
-			header("Location: ../views/investimentos.php?log=0&&method=delete");
+			header("Location: ../views/investimentos/investimentos.php?log=0&&method=delete");
 		} else {
-			header("Location: ../views/investimentos.php?log=1&&method=delete");
+			header("Location: ../views/investimentos/investimentos.php?log=1&&method=delete");
 		}
 	}
 
@@ -61,9 +61,9 @@ class InvestimentosController
 		$this->manager->setTipoInvestimento($_POST["tipo_investimento"]);
 		$result = $this->manager->alt_investimentos();
 		if (!$result) {
-			header("Location: ../views/investimentos.php?log=0&&method=update");
+			header("Location: ../views/investimentos/investimentos.php?log=0&&method=update");
 		} else {
-			header("Location: ../views/investimentos.php?log=1&&method=update");
+			header("Location: ../views/investimentos/investimentos.php?log=1&&method=update");
 		}
 	}
 }
