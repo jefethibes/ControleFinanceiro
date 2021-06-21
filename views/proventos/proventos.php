@@ -3,6 +3,7 @@
 
 <?php
     include("../bases/head.php");
+    include("../bases/paginacao_busca.php");
     include("../../models/connections/proventos_connect.php");
 
     $proventos = new ProventosConnect();
@@ -213,6 +214,4 @@
         </div>
     </div>
 </body>
-<script src="../static/js/pagination.js"></script>
-<script src="../static/js/search.js"></script>
 </html>

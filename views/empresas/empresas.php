@@ -3,6 +3,7 @@
 
 <?php
     include("../bases/head.php");
+    include("../bases/paginacao_busca.php");
     include("../../models/connections/empresas_connect.php");
 
     $empresa = new EmpresasConnect();
@@ -177,6 +178,4 @@
         </div>
     </div>
 </body>
-<script src="../static/js/pagination.js"></script>
-<script src="../static/js/search.js"></script>
 </html>
