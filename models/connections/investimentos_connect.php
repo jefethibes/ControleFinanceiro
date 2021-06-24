@@ -41,10 +41,10 @@ class InvestimentosConnect extends ConnectDB
 
 	public function update($id, $codigo, $valor, $quantidade, $data_compra, $valor_venda, $data_venda, $tipo_investimento)
 	{
-		if (!$data_venda || !$valor_venda) {
-			return false;
-		} elseif(!$data_venda && !$valor_venda) {
+		if(!$data_venda && !$valor_venda) {
 			$sql = "UPDATE investimentos SET codigo_empresa = '$codigo', valor = $valor, quantidade = $quantidade, data_compra = '$data_compra', tipo_investimento = '$tipo_investimento' WHERE id = $id;";
+		} elseif (!$data_venda || !$valor_venda) {
+			return false;
 		} else {
 			$sql = "UPDATE investimentos SET codigo_empresa = '$codigo', valor = $valor, quantidade = $quantidade, data_compra = '$data_compra', valor_venda = $valor_venda, data_venda = '$data_venda', tipo_investimento = '$tipo_investimento' WHERE id = $id;";
 		}

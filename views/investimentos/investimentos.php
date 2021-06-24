@@ -42,7 +42,7 @@
                                 <div class="form-group col-md-4">
                                     <label>Tipo Investimento:</label>
                                     <select class="form-control" type="text" name="tipo_investimento" id="tipo_investimento">
-                                        <option value="Buy and Hold">Buy and Hold</option>
+                                        <option value="Buy And Hold">Buy And Hold</option>
                                         <option value="Swing Trade">Swing Trade</option>
                                         <option value="Day Trade">Day Trade</option>
                                     </select>

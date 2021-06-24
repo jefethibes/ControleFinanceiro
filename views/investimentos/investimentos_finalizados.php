@@ -22,7 +22,6 @@
                             <option value="100">100</option>
                             <option value="999999999">Todos</option>
                         </select>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalForm"><i class="bi bi-plus-square"></i></button>
                     </div>
                 </th>
             </tr>
@@ -71,7 +70,7 @@
                                                 <label>Tipo Investimento:</label>
                                                 <select class="form-control" type="text" name="tipo_investimento" id="tipo_investimento">
                                                     <option value="<?php echo $values['tipo_investimento']; ?>"><?php echo $values['tipo_investimento']; ?></option>
-                                                    <option value="Buy and Hold">Buy and Hold</option>
+                                                    <option value="Buy And Hold">Buy And Hold</option>
                                                     <option value="Swing Trade">Swing Trade</option>
                                                     <option value="Day Trade">Day Trade</option>
                                                 </select>
@@ -90,7 +89,7 @@
                                         <div class="row">   
                                             <div class="form-group col-md-6">
                                                 <label>Valor Venda:</label>
-                                                <input class="form-control" type="number" step="0.01" name="valor_venda" id="valor_venda" value="<?php echo $values['valor_venda']; ?>" required>
+                                                <input class="form-control" type="number" step="0.01" name="valor_venda" id="valor_venda" value="<?php echo $values['valor_venda']; ?>">
                                             </div>                     
                                             <div class="form-group col-md-6">
                                                 <label>Data Venda:</label>

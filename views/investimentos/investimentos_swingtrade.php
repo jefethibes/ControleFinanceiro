@@ -31,7 +31,7 @@
         </thead>
         <tbody>
             <?php foreach ($lista_investimentos as $values): ?>
-                <?php if(!$values["valor_venda"] && $values["tipo_investimento"] != "Buy and Hold" && $values["tipo_investimento"] != "Day Trade"): ?>
+                <?php if(!$values["valor_venda"] && $values["tipo_investimento"] == "Swing Trade"): ?>
                     <div id="modalForm<?php echo $values['id']; ?>" class="modal fade" tabindex="-1" role="dialog">
                        <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -60,7 +60,7 @@
                                                 <label>Tipo Investimento:</label>
                                                 <select class="form-control" type="text" name="tipo_investimento" id="tipo_investimento">
                                                     <option value="<?php echo $values['tipo_investimento']; ?>"><?php echo $values['tipo_investimento']; ?></option>
-                                                    <option value="Buy and Hold">Buy and Hold</option>
+                                                    <option value="Buy And Hold">Buy And Hold</option>
                                                     <option value="Swing Trade">Swing Trade</option>
                                                     <option value="Day Trade">Day Trade</option>
                                                 </select>
@@ -79,7 +79,7 @@
                                         <div class="row">   
                                             <div class="form-group col-md-6">
                                                 <label>Valor Venda:</label>
-                                                <input class="form-control" type="number" step="0.01" name="valor_venda" id="valor_venda" value="<?php echo $values['valor_venda']; ?>" required>
+                                                <input class="form-control" type="number" step="0.01" name="valor_venda" id="valor_venda" value="<?php echo $values['valor_venda']; ?>">
                                             </div>                     
                                             <div class="form-group col-md-6">
                                                 <label>Data Venda:</label>
